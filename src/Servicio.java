@@ -1,6 +1,6 @@
 public class Servicio {
 
-
+ //Atributos
     private int codigoServicio;
     private String nombreServicio;
     private String descripcionServicio;
