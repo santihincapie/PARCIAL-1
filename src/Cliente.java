@@ -1,7 +1,7 @@
 public class Cliente {
 
     private int idCliente;
-    private String nombre;
+    private String razonSocial;
     private int identificacion;
     private int telefono;
     private String email;
@@ -9,9 +9,9 @@ public class Cliente {
 
 
 
-    Cliente(int idCliente, String nombre, int identificacion, int telefono, String email, String paisProvidencia) {
+    Cliente(int idCliente, String razonSocial, int identificacion, int telefono, String email, String paisProvidencia) {
      this.idCliente = idCliente;
-     this.nombre = nombre;
+    this.razonSocial = razonSocial;
      this.identificacion = identificacion;
      this.telefono = telefono;
      this.email = email;
@@ -46,12 +46,12 @@ public class Cliente {
         this.idCliente = idCliente;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getRazonSocial() {
+        return razonSocial;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
     }
 
     public int getIdentificacion() {

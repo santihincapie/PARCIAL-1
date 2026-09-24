@@ -1,19 +1,27 @@
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+
 public class Proyecto {
 
 
     private int codigoProyecto;
-    private String fechaSolicitud;
-    private String fechaInicio;
-    private String fechaEntrega;
-    private double valorTotal;
+    private LocalDate fechaSolicitud;
+    private LocalDate fechaInicio;
+    private LocalDate fechaEntrega;
 
 
-    Proyecto(int codigoProyecto, String fechaSolicitud, String fechaInicio, String fechaEntrega, double valorTotal) {
+    // Con otras clases
+    private list<Desarrollador> desarrolladores;
+    private list<Servicio> servicios;
+
+    Proyecto(LocalDate fechaSolicitud, LocalDate fechaInicio, LocalDate fechaEntrega) {
         this.codigoProyecto = codigoProyecto;
         this.fechaSolicitud = fechaSolicitud;
         this.fechaInicio = fechaInicio;
         this.fechaEntrega = fechaEntrega;
-        this.valorTotal = valorTotal;
+        this.desarrolladores= new ArrayList<>();
+        this.servicios= new ArrayList<>();
 
 
     }
@@ -21,8 +29,57 @@ public class Proyecto {
 
 
 
+    public void cambiarEstadoProyecto(EstadoProyecto nuevoEstado) {
+        this.estado=nuevoEstado;
 
 
+        switch (nuevoEstado) {
+            case Confirmado:
+                for(Desarrollador d: this.desarrollador){
+                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Ocupado)
+                }
+                break;
+
+            case En_Curso:
+                for (Desarrollador d: this.desarrollador){
+                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Asignado)
+                }
+                break;
+
+            case Finalizado:
+                for (Desarrollador d: this.desarrollador){
+                    d.actualizarDisponibilidadDesarrollador(EstadoProyecto.Disponible)
+                }
+                break;
+            case Cancelado:
+                for(Desarrollador d: this.desarrollador){
+                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Disponible)
+                }
+                break;
+            case Pendiente:
+                break;
+        }
+        }
+
+        public double calcularValorTotal(){
+        double total=0;
+        for(Desarrollador d: this.desarrollador) {
+            total = total + (d.getTarifaDia() * this.calcularDiasDuracion());
+        }
+            for(Servicio s: this.servicios){
+                total= total + s.getPrecio();
+            }
+
+            this.valorTotal = total;
+            return total;
+
+        }
+
+
+//esto es para saber la diferencia de dias entre dos fechas
+    private long calcularDiasDeDuracion() {
+        return ChronoUnit.DAYS.between(this.fechaInicio, this.fechaEntrega);
+    }
 
 
 
