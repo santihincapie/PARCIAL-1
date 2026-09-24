@@ -13,28 +13,21 @@ public class Servicio {
         this.nombreServicio = nombreServicio;
         this.descripcionServicio = descripcionServicio;
         this.precioServicio = precioServicio;
-        this.disponibilidad = false;
+        this.disponibilidad = true;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /* Primero dice "No esta disponible"?
+    Inicialmente ESTÁ DISPONIBLE, entonces por eso arroja false porque es una afirmacion false
+    luego de tener el valor FALSE, vuelve a afirmar lo mismo, siento esto verdadero que no esta disponible
+    retorna true
+     */
+public boolean cambiarDisponibilidad(){
+    if(!this.disponibilidad)  this.disponibilidad = true;
+        else{
+            this.disponibilidad = false;
+        }
+        return disponibilidad;
+    }
+}
 
 
     public int getCodigoServicio() {
