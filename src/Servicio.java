@@ -20,7 +20,9 @@ public class Servicio {
 
 
 
-
+    //Método cambiarDisponibilidad
+    public void cambiarDisponibilidad() {
+        disponibilidad = !disponibilidad;
 
 
 

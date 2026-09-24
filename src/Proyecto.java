@@ -18,6 +18,42 @@ public class Proyecto {
 
     }
 
+    // calcularValorTotal()
+    public double calcularValorTotal() {
+        if (Servicio != null) {
+            valorTotal = Servicio.getPrecioServicio();
+        } else {
+            valorTotal = 0;
+        }
+
+        return valorTotal;
+    }
+
+    // cambiarEstadoProyecto()
+    public void cambiarEstadoProyecto(EstadoProyecto nuevoEstado) {
+        this.EstadoProyecto = nuevoEstado;
+    }
+
+    // asignarDesarrollador()
+    public boolean asignarDesarrollador(Desarrollador desarrollador) {
+
+        if (desarrollador == null) {
+            return false;
+        }
+
+        if (this.Desarrollador != null) {
+            return false;
+        }
+
+        this.Desarrollador = desarrollador;
+        return true;
+    }
+
+    // asignarServicio()
+    public void asignarServicio(Servicios servicio) {
+        this.Servicio = servicio;
+        calcularValorTotal();
+    }
 
 
 
