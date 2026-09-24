@@ -4,4 +4,5 @@ public enum EstadoProyecto {
     En_Curso,
     Finalizado,
     Cancelado;
+    public static EstadoDesarrollador Disponible;
 }

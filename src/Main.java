@@ -56,10 +56,10 @@ public class Main {
     }
 
     private static void solicitarInformacionCliente() {
-        String idCliente = JOptionPane.showInputDialog("Ingrese el ID correspondiente al cliente");
+        int idCliente = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID correspondiente al cliente"));
         String razonSocial = JOptionPane.showInputDialog("Introduce el nombre del cliente");
-        String identificacion = JOptionPane.showInputDialog("Introduce el nombre del cliente");
-        String telefono = JOptionPane.showInputDialog("Introduce el telefono del cliente");
+        int identificacion = Integer.parseInt(JOptionPane.showInputDialog("Introduce la identificacion del cliente"));
+        int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el telefono del cliente"));
         String email = JOptionPane.showInputDialog("Introduce el email del cliente");
         String pais = JOptionPane.showInputDialog("Introduce el pais  de procedencia del cliente");
 
@@ -74,7 +74,7 @@ nuevaEmpresa.registrarCliente(nuevoCliente);
         double tarifaDia = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la tarifa por día del desarrollador"));
         int cantidadMax = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cantidad máxima de proyectos que el desarrollador puede realizar simultaneamente "));
 
-        Desarrollador nuevoDesarrollador = new Desarrollador(codigoDesarrollador, equipoTrabajo, tarifaDia, cantidadMax);
+        Desarrollador nuevoDesarrollador = new Desarrollador(codigoDesarrollador, cantidadMax, tarifaDia, equipoTrabajo);
         nuevaEmpresa.registrarDesarollador(nuevoDesarrollador);
         JOptionPane.showMessageDialog(null, "Desarrollador registrado con exito");
     }

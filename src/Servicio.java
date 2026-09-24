@@ -27,7 +27,7 @@ public boolean cambiarDisponibilidad(){
         }
         return disponibilidad;
     }
-}
+
 
 
     public int getCodigoServicio() {
@@ -69,4 +69,7 @@ public boolean cambiarDisponibilidad(){
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
+
+void main() {
+}
 }

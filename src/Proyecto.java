@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Proyecto {
 
@@ -12,11 +13,14 @@ public class Proyecto {
     private String nombreProyecto;
 
     // Con otras clases
-    private list<Desarrollador> desarrolladores;
-    private list<Servicio> servicios;
+    private List<Desarrollador> desarrolladores;
+    private List<Servicio> servicios;
+    private EstadoProyecto estado;
+    private Desarrollador[] desarrollador;
+    private double valorTotal;
 
-    Proyecto(LocalDate fechaSolicitud, LocalDate fechaInicio, LocalDate fechaEntrega) {
-        this.codigoProyecto = codigoProyecto;
+    Proyecto(int codigoProyecto, LocalDate fechaSolicitud, LocalDate fechaInicio, LocalDate fechaEntrega) {
+        this.codigoProyecto = this.codigoProyecto;
         this.fechaSolicitud = fechaSolicitud;
         this.fechaInicio = fechaInicio;
         this.fechaEntrega = fechaEntrega;
@@ -37,24 +41,24 @@ public class Proyecto {
         switch (nuevoEstado) {
             case Confirmado:
                 for(Desarrollador d: this.desarrollador){
-                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Ocupado)
+                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Ocupado);
                 }
                 break;
 
             case En_Curso:
                 for (Desarrollador d: this.desarrollador){
-                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Asignado)
+                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Asignado);
                 }
                 break;
 
             case Finalizado:
                 for (Desarrollador d: this.desarrollador){
-                    d.actualizarDisponibilidadDesarrollador(EstadoProyecto.Disponible)
+                    d.actualizarDisponibilidadDesarrollador(EstadoProyecto.Disponible);
                 }
                 break;
             case Cancelado:
                 for(Desarrollador d: this.desarrollador){
-                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Disponible)
+                    d.actualizarDisponibilidadDesarrollador(EstadoDesarrollador.Disponible);
                 }
                 break;
             case Pendiente:
@@ -64,11 +68,11 @@ public class Proyecto {
 
         public double calcularValorTotal(){
         double total=0;
-        for(Desarrollador d: this.desarrollador) {
+        for(Desarrollador d: this.desarrolladores) {
             total = total + (d.getTarifaDia() * this.calcularDiasDuracion());
         }
             for(Servicio s: this.servicios){
-                total= total + s.getPrecio();
+                total= total + s.getPrecioServicio();
             }
 
             this.valorTotal = total;
@@ -76,8 +80,12 @@ public class Proyecto {
 
         }
 
+    private double calcularDiasDuracion() {
+        return 0;
+    }
 
-//esto es para saber la diferencia de dias entre dos fechas
+
+    //esto es para saber la diferencia de dias entre dos fechas
     private long calcularDiasDeDuracion() {
         return ChronoUnit.DAYS.between(this.fechaInicio, this.fechaEntrega);
     }
@@ -97,19 +105,19 @@ public class Proyecto {
         this.codigoProyecto = codigoProyecto;
     }
 
-    public String getFechaSolicitud() {
+    public LocalDate getFechaSolicitud() {
         return fechaSolicitud;
     }
 
-    public void setFechaSolicitud(String fechaSolicitud) {
+    public void setFechaSolicitud(LocalDate fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
 
-    public String getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -121,11 +129,11 @@ public class Proyecto {
         this.valorTotal = valorTotal;
     }
 
-    public String getFechaEntrega() {
+    public LocalDate getFechaEntrega() {
         return fechaEntrega;
     }
 
-    public void setFechaEntrega(String fechaEntrega) {
+    public void setFechaEntrega(LocalDate fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
     }
 
