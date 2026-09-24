@@ -9,7 +9,7 @@ public class Proyecto {
     private LocalDate fechaSolicitud;
     private LocalDate fechaInicio;
     private LocalDate fechaEntrega;
-
+    private String nombreProyecto;
 
     // Con otras clases
     private list<Desarrollador> desarrolladores;
@@ -22,6 +22,7 @@ public class Proyecto {
         this.fechaEntrega = fechaEntrega;
         this.desarrolladores= new ArrayList<>();
         this.servicios= new ArrayList<>();
+        this.nombreProyecto= nombreProyecto;
 
 
     }
@@ -126,6 +127,14 @@ public class Proyecto {
 
     public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
+    }
+
+    public String getNombreProyecto() {
+        return nombreProyecto;
+    }
+
+    public void setNombreProyecto(String nombreProyecto) {
+        this.nombreProyecto = nombreProyecto;
     }
 }
 
