@@ -1,6 +1,6 @@
 public class Servicio {
 
- //Atributos
+    //Atributos
     private int codigoServicio;
     private String nombreServicio;
     private String descripcionServicio;
@@ -8,26 +8,28 @@ public class Servicio {
     private boolean disponibilidad;
 
 
-    Servicio(int codigoServicio, String nombreServicio, String descripcionServicio, double precioServicio) {
+   public Servicio(int codigoServicio, String nombreServicio, String descripcionServicio, double precioServicio) {
         this.codigoServicio = codigoServicio;
         this.nombreServicio = nombreServicio;
         this.descripcionServicio = descripcionServicio;
         this.precioServicio = precioServicio;
         this.disponibilidad = true;
     }
+
     /* Primero dice "No esta disponible"?
     Inicialmente ESTÁ DISPONIBLE, entonces por eso arroja false porque es una afirmacion false
     luego de tener el valor FALSE, vuelve a afirmar lo mismo, siento esto verdadero que no esta disponible
     retorna true
      */
-public boolean cambiarDisponibilidad(){
-    if(!this.disponibilidad)  this.disponibilidad = true;
-        else{
+    public boolean cambiarDisponibilidad() {
+        if (!this.disponibilidad) this.disponibilidad = true;
+        else {
             this.disponibilidad = false;
         }
         return disponibilidad;
     }
-}
+
+
 
 
     public int getCodigoServicio() {
@@ -70,3 +72,4 @@ public boolean cambiarDisponibilidad(){
         this.disponibilidad = disponibilidad;
     }
 }
+
