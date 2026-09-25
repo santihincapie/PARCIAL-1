@@ -6,14 +6,14 @@ public class Cliente {
 
     private int idCliente;
     private String razonSocial;
-    private int identificacion;
+    private String identificacion;
     private int telefono;
     private String email;
     private String paisProcedencia;
 
     private List<Proyecto> proyectosContratados;
 
-    Cliente(int idCliente, String razonSocial, int identificacion, int telefono, String email, String paisProvidencia) {
+    Cliente(int idCliente, String razonSocial, String identificacion, int telefono, String email, String paisProvidencia) {
      this.idCliente = idCliente;
      this.razonSocial = razonSocial;
      this.identificacion = identificacion;
@@ -77,11 +77,11 @@ public class Cliente {
         this.razonSocial = razonSocial;
     }
 
-    public int getIdentificacion() {
+    public String getIdentificacion() {
         return identificacion;
     }
 
-    public void setIdentificacion(int identificacion) {
+    public void setIdentificacion(String identificacion) {
         this.identificacion = identificacion;
     }
 

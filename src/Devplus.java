@@ -41,12 +41,12 @@ public class Devplus {
 
     public Cliente consultarClienteTelefono(String telefono) {
         for (Cliente c : clientes) {
-            // ojo: telefono en Cliente es int, aquí llega como String -> conviertes para comparar
+
             if (String.valueOf(c.getTelefono()).equals(telefono)) {
                 return c;
             }
         }
-        return null; // no encontrado
+        return null;
     }
 
     public boolean esNumeroPerfecto(int numero) {

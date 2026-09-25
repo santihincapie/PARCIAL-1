@@ -16,7 +16,7 @@ public class Main {
 
          */
             option = Integer.parseInt(JOptionPane.showInputDialog("Bienvenido al menú de DevPlus:" +
-                    "\n 1. Registrar CLiente" +
+                    "\n 1. Registrar Cliente" +
                     "\n 2. Registrar Desarrollador" +
                     "\n 3. Registrar Proyecto" +
                     "\n 4. Consultar cliente por el número de telefono" +
@@ -58,7 +58,7 @@ public class Main {
     private static void solicitarInformacionCliente() {
         int idCliente = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID correspondiente al cliente"));
         String razonSocial = JOptionPane.showInputDialog("Introduce el nombre del cliente");
-        int identificacion = Integer.parseInt(JOptionPane.showInputDialog("Introduce la identificacion del cliente"));
+        String identificacion = JOptionPane.showInputDialog("Introduce la identificacion del cliente");
         int telefono = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el telefono del cliente"));
         String email = JOptionPane.showInputDialog("Introduce el email del cliente");
         String pais = JOptionPane.showInputDialog("Introduce el pais  de procedencia del cliente");
@@ -79,26 +79,28 @@ nuevaEmpresa.registrarCliente(nuevoCliente);
         JOptionPane.showMessageDialog(null, "Desarrollador registrado con exito");
     }
 
-    private static void solicitarInformacionProyecto() {
-        int codigoProyecto= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del proyecto"));
-        String fechaSolicitudTexto = JOptionPane.showInputDialog("Ingrese la fecha de solicitacion del proyecto");
-        String fechaInicioTexto = JOptionPane.showInputDialog("Ingrese la fecha de inicio del proyecto");
-        String fechaEntregaTexto = JOptionPane.showInputDialog("Ingrese la fecha de entrega del proyecto");
+        private static void solicitarInformacionProyecto() {
+            int codigoProyecto= Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del proyecto"));
+            String fechaSolicitudTexto = JOptionPane.showInputDialog("Ingrese la fecha de solicitacion del proyecto");
+            String fechaInicioTexto = JOptionPane.showInputDialog("Ingrese la fecha de inicio del proyecto");
+            String fechaEntregaTexto = JOptionPane.showInputDialog("Ingrese la fecha de entrega del proyecto");
 
+        /*
+         Este comando LocalDate.parse sirve para convertir el texto en una fecha real dentro de java, esto con
+           el proposito de calcular los días
+         */
 
-    /*
-     Este comando LocalDate.parse sirve para convertir el texto en una fecha real dentro de java, esto con
-       el proposito de calcular los días
-     */
+            LocalDate fechaSolicitud = LocalDate.parse(fechaSolicitudTexto);
+            LocalDate fechaInicio = LocalDate.parse(fechaInicioTexto);
+            LocalDate fechaEntrega = LocalDate.parse(fechaEntregaTexto);
 
-        LocalDate fechaSolicitud = LocalDate.parse(fechaSolicitudTexto);
-        LocalDate fechaInicio = LocalDate.parse(fechaInicioTexto);
-        LocalDate fechaEntrega = LocalDate.parse(fechaEntregaTexto);
-
-        Proyecto nuevoProyecto = new Proyecto(codigoProyecto, fechaSolicitud, fechaInicio, fechaEntrega);
-nuevaEmpresa.registrarProyecto(nuevoProyecto);
-        JOptionPane.showMessageDialog(null, "Proyecto registrado con exito");
-    }
+            Proyecto nuevoProyecto = new Proyecto(codigoProyecto, fechaSolicitud, fechaInicio, fechaEntrega);
+    nuevaEmpresa.registrarProyecto(nuevoProyecto);
+            String metodoTexto = JOptionPane.showInputDialog("Ingrese el método de pago (Tarjeta_Credito, Transferencia_Bancaria, Efectivo):");
+            MetodoPago metodo = MetodoPago.valueOf(metodoTexto);
+            nuevoProyecto.setMetodoPago(metodo);
+            JOptionPane.showMessageDialog(null, "Proyecto registrado con exito");
+        }
 
 
     private static void solicitarTelefonoCliente() {
@@ -108,7 +110,7 @@ nuevaEmpresa.registrarProyecto(nuevoProyecto);
         if (encontrado == null) {
             JOptionPane.showMessageDialog(null, "El telefono no existe");
         } else {
-            JOptionPane.showMessageDialog(null, "Cliente encontrado" + encontrado.getRazonSocial());
+            JOptionPane.showMessageDialog(null, "Cliente encontrado:" + encontrado.getRazonSocial());
         }
     }
 
